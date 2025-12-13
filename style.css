@@ -1,19 +1,20 @@
 /* --- FUENTES --- */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@300;600&display=swap');
 
-/* --- GENERAL --- */
+/* --- ESTILOS GENERALES (Colores más románticos) --- */
 body {
     font-family: 'Nunito', sans-serif;
+    /* Degradado suave de rosa claro a blanco crema */
     background: linear-gradient(135deg, #fff0f5 0%, #fdfbfb 100%);
-    color: #5a3a4a;
+    color: #5a3a4a; /* Color de texto grisáceo/rosado */
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal */
 }
 
 h1, h2, h3 {
     font-family: 'Dancing Script', cursive;
-    color: #d81b60;
+    color: #d81b60; /* Rosa más intenso y elegante */
 }
 
 /* --- HEADER / PORTADA --- */
@@ -24,78 +25,56 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #f8bbd0; 
+    /* RECUERDA: Cambia esto por tu foto de portada */
+    background: url('img/portada.jpg') no-repeat center center/cover; 
     position: relative;
-    overflow: hidden;
 }
 
-/* Texto central */
+header::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Capa rosada semitransparente sobre la foto */
+    background: rgba(216, 27, 96, 0.3);
+}
+
 .header-content {
     position: relative;
-    z-index: 10;
-    padding: 20px;
+    z-index: 1;
+    color: white;
 }
 
 .header-content h1 {
-    font-size: 5rem;
-    margin: 0;
+    font-size: 4.5rem;
+    margin-bottom: 15px;
     color: #fff;
-    text-shadow: 2px 2px 10px rgba(216, 27, 96, 0.4);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
 }
-
 .header-content p {
     font-size: 1.5rem;
-    color: #fff;
+    font-weight: 300;
+}
+
+/* --- CONTADOR --- */
+.counter-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fffafa; /* Blanco nieve */
+}
+
+#timer {
+    font-size: 1.8rem;
     font-weight: 600;
+    color: #d81b60;
+    margin-top: 25px;
+    display: inline-block;
+    padding: 20px 30px;
+    border: 3px dashed #f8bbd0; /* Borde rosa claro */
+    border-radius: 15px;
+    background-color: #fff0f5;
 }
 
-/* --- BURBUJAS FLOTANTES EN EL HEADER --- */
-.hero-bubble {
-    position: absolute;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    z-index: 1;
-    animation: float 6s ease-in-out infinite;
-    cursor: pointer;
-    background: #e0e0e0;
-    transition: transform 0.3s;
-}
-
-.hero-bubble:hover {
-    transform: scale(1.1);
-    z-index: 20;
-    border-color: #d81b60;
-}
-
-.hero-bubble img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* POSICIONES (Basado en tu dibujo) */
-.b1 { top: 10%; left: 8%; width: 160px; height: 160px; animation-delay: 0s; }
-.b2 { top: 8%; left: 50%; transform: translateX(-50%); width: 130px; height: 130px; animation-delay: 1s; }
-.b3 { top: 12%; right: 8%; width: 170px; height: 170px; animation-delay: 2s; }
-.b4 { bottom: 15%; left: 18%; width: 150px; height: 150px; animation-delay: 1.5s; }
-.b5 { bottom: 18%; right: 15%; width: 140px; height: 140px; animation-delay: 2.5s; }
-
-@keyframes float {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(2deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-@keyframes float-center {
-    0% { transform: translateX(-50%) translateY(0px); }
-    50% { transform: translateX(-50%) translateY(-20px); }
-    100% { transform: translateX(-50%) translateY(0px); }
-}
-.b2 { animation-name: float-center; }
-
-
-/* --- TARJETAS DE MEMORIA --- */
+/* --- TIMELINE (HISTORIA) - Tarjetas Románticas --- */
 .timeline {
     padding: 60px 20px;
     max-width: 900px;
@@ -103,66 +82,180 @@ header {
 }
 
 .memory-card {
-    background: #fff;
+    background: #fff; /* Blanco puro para resaltar */
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /* Sombra más suave y rosada */
+    box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15);
     margin-bottom: 50px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
+}
+.memory-card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
 }
 
-.photo-placeholder {
+.memory-img {
     width: 100%;
     height: 350px;
-    background-color: #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    object-fit: cover;
     border-bottom: 3px solid #f8bbd0;
-    overflow: hidden;
 }
 
-.photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-.memory-text { padding: 30px; }
+.memory-text {
+    padding: 30px;
+    background-color: #fffafa;
+}
+.memory-text h3 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.memory-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.memory-text small {
+    color: #ad1457; /* Color de fecha más oscuro */
+    font-weight: 600;
+}
+
+/* --- VIDEO --- */
+.video-section {
+    /* Fondo degradado oscuro rosado */
+    background: linear-gradient(135deg, #2c0e19 0%, #4a1c2d 100%);
+    padding: 70px 20px;
+    text-align: center;
+    color: #fce4ec;
+}
+.video-section h2 { color: #fce4ec; }
+
+iframe {
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 3px solid #d81b60;
+}
 
 /* --- BOTÓN DE MÚSICA --- */
 .music-btn {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background: #d81b60;
+    background: #d81b60; /* Rosa intenso */
     color: white;
     border: none;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    width: 65px;
+    height: 65px;
+    font-size: 26px;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(216, 27, 96, 0.4);
     z-index: 100;
     animation: pulse 2s infinite;
+    transition: background 0.3s;
 }
+.music-btn:hover { background: #ad1457; }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 27, 96, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(216, 27, 96, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 27, 96, 0); }
 }
 
-/* RESPONSIVE */
+/* --- BURBUJAS FLOTANTES LATERALES --- */
+.floating-sidebar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.sidebar-left { left: 25px; }
+.sidebar-right { right: 25px; }
+
+.side-bubble {
+    display: block;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid #f8bbd0; /* Borde rosa claro */
+    box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    background: #fff0f5;
+}
+
+.side-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Tooltip */
+.side-bubble::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(173, 20, 87, 0.9); /* Fondo tooltip rosa oscuro */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, bottom 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.side-bubble:hover {
+    transform: scale(1.2) rotate(5deg);
+    border-color: #d81b60; /* Borde rosa intenso al hover */
+}
+.side-bubble:hover img { transform: scale(1.1); }
+.side-bubble:hover::after {
+    opacity: 1;
+    bottom: -45px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #f8bbd0;
+    color: #880e4f;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+}
+
+/* --- RESPONSIVE (MÓVIL) --- */
 @media (min-width: 768px) {
+    /* Estilos para PC/Tablet: Tarjetas alternadas */
     .memory-card:nth-child(even) { flex-direction: row-reverse; }
     .memory-card:nth-child(odd) { flex-direction: row; }
-    .photo-placeholder { width: 50%; height: auto; border-bottom: none; }
-    .memory-text { width: 50%; }
+    .memory-img { width: 50%; height: auto; border-bottom: none; }
+    /* Borde lateral alternado */
+    .memory-card:nth-child(odd) .memory-img { border-right: 3px solid #f8bbd0; }
+    .memory-card:nth-child(even) .memory-img { border-left: 3px solid #f8bbd0; }
+    .memory-text { width: 50%; display: flex; flex-direction: column; justify-content: center; }
 }
 
 @media (max-width: 768px) {
+    /* Ajustes para Celular */
     .header-content h1 { font-size: 3.5rem; }
-    .b1 { width: 90px; height: 90px; top: 10%; left: 5%; }
-    .b2 { width: 80px; height: 80px; top: 5%; }
-    .b3 { width: 90px; height: 90px; top: 10%; right: 5%; }
-    .b4 { width: 85px; height: 85px; bottom: 10%; left: 10%; }
-    .b5 { width: 80px; height: 80px; bottom: 12%; right: 10%; }
+    .sidebar-left { left: 10px; }
+    .sidebar-right { right: 10px; }
+    .side-bubble { width: 55px; height: 55px; opacity: 0.9; }
+    .side-bubble::after { display: none; }
+    .memory-img { height: 250px; }
 }
