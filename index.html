@@ -5,160 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversario ❤️</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@300;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ESTILOS GENERALES */
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            color: #333;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        h1, h2 {
-            font-family: 'Dancing Script', cursive;
-            color: #e91e63;
-        }
-
-        /* HEADER / PORTADA */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: url('img/portada.jpg') no-repeat center center/cover; /* CAMBIA ESTO POR TU FOTO DE PORTADA */
-            position: relative;
-        }
-
-        /* Capa oscura sobre la foto para que se lea el texto */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            color: white;
-        }
-
-        .header-content h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* CONTADOR DE TIEMPO */
-        .counter-section {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #fff;
-        }
-        
-        #timer {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #e91e63;
-            margin-top: 20px;
-            display: inline-block;
-            padding: 15px;
-            border: 2px dashed #e91e63;
-            border-radius: 10px;
-        }
-
-        /* TIMELINE (HISTORIA) */
-        .timeline {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .memory-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column; /* En celular se ve uno bajo otro */
-        }
-
-        .memory-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .memory-text {
-            padding: 20px;
-        }
-
-        /* VIDEO */
-        .video-section {
-            background-color: #000;
-            padding: 50px 20px;
-            text-align: center;
-            color: white;
-        }
-
-        iframe {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
-        }
-
-        /* BOTÓN DE MÚSICA FLOTANTE */
-        .music-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #e91e63;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 100;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        /* MOBILE TWEAKS */
-        @media (min-width: 768px) {
-            .memory-card:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-            .memory-card:nth-child(odd) {
-                flex-direction: row;
-            }
-            .memory-img {
-                width: 50%;
-                height: auto;
-            }
-            .memory-text {
-                width: 50%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -167,82 +14,77 @@
     </audio>
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
+    <div class="floating-sidebar sidebar-left">
+        <a href="carta.html" class="side-bubble" data-title="Léeme 💌">
+            <img src="img/icono-carta.jpg" alt="Carta">
+        </a>
+    </div>
+
+    <div class="floating-sidebar sidebar-right">
+        <a href="#video-sorpresa" class="side-bubble" data-title="Video Sorpresa 🎬">
+            <img src="img/icono-video.jpg" alt="Video">
+        </a>
+    </div>
     <header>
         <div class="header-content" data-aos="fade-up">
             <h1>Feliz Aniversario</h1>
-            <p>Eres mi persona favorita en el mundo</p>
+            <p>Eres el amor de mi vida</p>
         </div>
     </header>
 
     <section class="counter-section">
-        <h2>Tiempo enamorados</h2>
-        <div id="timer">Cargando...</div>
-        <p>... y contando ❤️</p>
+        <h2>Juntos desde hace...</h2>
+        <div id="timer">Calculando...</div>
     </section>
 
     <section class="timeline">
-        
         <div class="memory-card" data-aos="fade-right">
-            <img src="img/foto1.jpg" alt="Nuestra primera cita" class="memory-img">
+            <img src="img/foto1.jpg" alt="Foto 1" class="memory-img">
             <div class="memory-text">
-                <h3>El comienzo de todo</h3>
-                <p>¿Te acuerdas de este día? Estaba super nervioso pero en cuanto te vi sonreír, supe que todo saldría bien.</p>
-                <small>📅 12 de Diciembre, 202x</small>
+                <h3>El primer día</h3>
+                <p>Aquí empezó nuestra historia...</p>
+                <small>📅 Fecha del recuerdo</small>
             </div>
         </div>
 
         <div class="memory-card" data-aos="fade-left">
-            <img src="img/foto2.jpg" alt="Viaje a la playa" class="memory-img">
+            <img src="img/foto2.jpg" alt="Foto 2" class="memory-img">
             <div class="memory-text">
-                <h3>Nuestra primera aventura</h3>
-                <p>Ese viaje cambió todo. Me encantó ver cómo disfrutabas el mar. Eres luz.</p>
-                <small>📅 Febrero, 202x</small>
+                <h3>Nuestro viaje</h3>
+                <p>Esa vez que nos perdimos pero nos reímos mucho.</p>
+                <small>📅 Fecha del recuerdo</small>
             </div>
         </div>
-
-        <div class="memory-card" data-aos="fade-right">
-            <img src="img/foto3.jpg" alt="Cena romántica" class="memory-img">
-            <div class="memory-text">
-                <h3>Momentos simples</h3>
-                <p>No necesitamos grandes lujos, solo una pizza y tu compañía para ser feliz.</p>
-            </div>
-        </div>
-
     </section>
 
-    <section class="video-section">
-        <h2 style="margin-bottom: 30px;">Un pequeño video para ti 🎬</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_ID_DE_VIDEO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section class="video-section" id="video-sorpresa">
+        <h2>Nuestro Video 🎥</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_ID_AQUI" frameborder="0" allowfullscreen></iframe>
     </section>
 
-    <footer style="text-align: center; padding: 40px; background: #333; color: white;">
-        <p>Hecho con ❤️ y mucho código por [Tu Nombre]</p>
+    <footer>
+        <p>Te amo ❤️</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Iniciar animaciones
         AOS.init();
 
-        // FECHA DE INICIO DE LA RELACIÓN (AÑO, MES (0-11), DÍA)
-        // OJO: Los meses en JS empiezan en 0. Enero = 0, Diciembre = 11.
-        const startDate = new Date(2023, 11, 12); // Ejemplo: 12 de Diciembre 2023
+        // --- CONFIGURACIÓN ---
+        // Pon aquí la fecha de inicio: Año, Mes (Enero es 0), Día
+        const startDate = new Date(2023, 11, 12); 
 
         function updateTimer() {
             const now = new Date();
             const diff = now - startDate;
-
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
-
-            document.getElementById("timer").innerHTML = 
-                `${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos`;
+            document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
         setInterval(updateTimer, 1000);
 
-        // Control de Música
         const music = document.getElementById('bg-music');
         function toggleMusic() {
             if (music.paused) {
