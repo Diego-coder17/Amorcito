@@ -319,3 +319,80 @@ footer {
     .b1 { left: 5%; } .b3 { right: 5%; }
     .b4 { left: 10%; } .b5 { right: 10%; }
 }
+/* --- ESTILOS PARA LAS BURBUJAS DEL HEADER --- */
+/* Asegura que el header permita elementos flotantes dentro */
+header {
+    position: relative; /* CRUCIAL para que las burbujas no se salgan */
+    overflow: hidden;   /* Evita barras de scroll si una burbuja se sale un poco */
+}
+
+.hero-bubble {
+    position: absolute; /* Esto permite moverlas libremente */
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+    overflow: hidden;
+    z-index: 5;
+    background: #fff0f5;
+    transition: transform 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+    
+    /* Tamaño por defecto de las burbujas */
+    width: 130px;
+    height: 130px;
+    
+    /* Centrar imagen dentro del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-bubble:hover {
+    transform: scale(1.1); /* Crecen un poco al pasar el mouse */
+    border-color: #d81b60;
+    z-index: 10;
+}
+
+/* --- POSICIONES EXACTAS (COORDENADAS) --- */
+
+/* 1. Arriba Izquierda */
+.b1 { top: 10%; left: 10%; animation-delay: 0s; }
+
+/* 2. Arriba Centro */
+.b2 { top: 8%; left: 50%; transform: translateX(-50%); width: 150px; height: 150px; animation-delay: 1s; }
+/* Corrección para que la animación no mueva el centro */
+@keyframes float-center {
+    0% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-15px); }
+    100% { transform: translateX(-50%) translateY(0px); }
+}
+.b2 { animation-name: float-center; }
+
+/* 3. Arriba Derecha */
+.b3 { top: 15%; right: 10%; animation-delay: 2s; }
+
+/* 4. Abajo Izquierda */
+.b4 { bottom: 15%; left: 15%; animation-delay: 1.5s; }
+
+/* 5. Abajo Derecha */
+.b5 { bottom: 18%; right: 15%; animation-delay: 2.5s; }
+
+/* Animación de flotación */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* AJUSTE PARA CELULAR (Para que no tapen el texto) */
+@media (max-width: 768px) {
+    .hero-bubble { width: 70px; height: 70px; opacity: 0.9; }
+    .b2 { width: 90px; height: 90px; top: 5%; } /* La del centro un poco más grande */
+    .header-content h1 { font-size: 3rem; } /* Título un poco más chico */
+}
