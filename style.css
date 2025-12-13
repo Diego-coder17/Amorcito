@@ -259,3 +259,63 @@ footer {
     .side-bubble::after { display: none; }
     .memory-img { height: 250px; }
 }
+/* --- NUEVO: BURBUJAS DE LA PORTADA (ESTILO CÍRCULOS ROJOS) --- */
+.hero-bubble {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    z-index: 5; /* Encima del fondo, pero bajo el texto */
+    animation: float 6s ease-in-out infinite;
+    background: #e0e0e0; /* Color gris de espera */
+    transition: transform 0.3s;
+}
+
+.hero-bubble:hover {
+    transform: scale(1.1);
+    z-index: 20;
+    border-color: #d81b60;
+}
+
+.hero-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* POSICIONES EXACTAS (Basado en tu dibujo de círculos rojos) */
+/* Arriba Izquierda */
+.b1 { top: 10%; left: 8%; width: 140px; height: 140px; animation-delay: 0s; }
+/* Arriba Centro */
+.b2 { top: 8%; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; animation-delay: 1s; }
+/* Arriba Derecha */
+.b3 { top: 12%; right: 8%; width: 150px; height: 150px; animation-delay: 2s; }
+/* Abajo Izquierda */
+.b4 { bottom: 18%; left: 18%; width: 130px; height: 130px; animation-delay: 1.5s; }
+/* Abajo Derecha */
+.b5 { bottom: 20%; right: 18%; width: 130px; height: 130px; animation-delay: 2.5s; }
+
+/* Animación de flotación suave */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Corrección especial para la burbuja central (b2) para que no pierda el centro */
+@keyframes float-center {
+    0% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-20px); }
+    100% { transform: translateX(-50%) translateY(0px); }
+}
+.b2 { animation-name: float-center; }
+
+/* Ajuste para celular para que no tapen el texto */
+@media (max-width: 768px) {
+    .b1, .b3 { width: 80px; height: 80px; top: 10%; }
+    .b2 { width: 70px; height: 70px; top: 5%; }
+    .b4, .b5 { width: 70px; height: 70px; bottom: 15%; }
+    .b1 { left: 5%; } .b3 { right: 5%; }
+    .b4 { left: 10%; } .b5 { right: 10%; }
+}
