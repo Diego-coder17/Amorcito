@@ -14,43 +14,125 @@
     </audio>
     <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
+    <div class="floating-sidebar sidebar-left">
+        <a href="carta.html" class="side-bubble" data-title="Léeme 💌">
+            <img src="img/icono-carta.jpg" alt="Carta">
+        </a>
+    </div>
 
+    <div class="floating-sidebar sidebar-right">
+        <a href="#video-sorpresa" class="side-bubble" data-title="Video Sorpresa 🎬">
+            <img src="img/icono-video.jpg" alt="Video">
+        </a>
+    </div>
     <header>
-        
-        <a href="carta.html" class="hero-bubble b1" title="Leer Carta 💌">
-            <img src="https://placehold.co/200x200/pink/white?text=💌+Carta" alt="Ir a Carta">
-        </a>
-
-        <div class="hero-bubble b2">
-            <img src="https://placehold.co/200x200/pink/white?text=Foto+Juntos" alt="Foto">
-        </div>
-
-        <a href="#video-sorpresa" class="hero-bubble b3" title="Ver Video 🎬">
-            <img src="https://placehold.co/200x200/pink/white?text=🎬+Video" alt="Ir a Video">
-        </a>
-
-        <div class="hero-bubble b4">
-            <img src="https://placehold.co/200x200/pink/white?text=Foto+Risus" alt="Foto">
-        </div>
-
-        <a href="album.html" class="hero-bubble b5" title="Ver Álbum de Fotos 📸">
-            <img src="https://placehold.co/200x200/pink/white?text=📸+Álbum" alt="Ir a Álbum">
-        </a>
-
-        <div class="header-content" data-aos="zoom-in">
+        <div class="header-content" data-aos="fade-up">
             <h1>Feliz Aniversario</h1>
             <p>Eres el amor de mi vida</p>
         </div>
     </header>
 
-
     <section class="counter-section">
         <h2>Juntos desde hace...</h2>
-        <div id="timer">Calculando tiempo juntos...</div>
+        <div id="timer">Calculando...</div>
     </section>
-
 
     <section class="timeline">
         
         <div class="memory-card" data-aos="fade-right">
-            
+            <img src="img/foto1.jpg" alt="Foto 1" class="memory-img">
+            <div class="memory-text">
+                <h3>El primer día</h3>
+                <p>Aquí empezó nuestra historia, ¿te acuerdas de los nervios? Yo no podía dejar de sonreír.</p>
+                <small>📅 Fecha del recuerdo</small>
+            </div>
+        </div>
+
+        <div class="memory-card" data-aos="fade-left">
+            <img src="img/foto2.jpg" alt="Foto 2" class="memory-img">
+            <div class="memory-text">
+                <h3>Nuestro viaje</h3>
+                <p>Esa vez que nos perdimos pero nos reímos tanto que no importó nada más. Fue inolvidable.</p>
+                <small>📅 Fecha del recuerdo</small>
+            </div>
+        </div>
+
+        <div class="memory-card" data-aos="fade-right">
+            <img src="img/foto3.jpg" alt="Foto 3" class="memory-img">
+            <div class="memory-text">
+                <h3>Nuestra canción</h3>
+                <p>La primera vez que bailamos esto juntos, el mundo se detuvo un poquito.</p>
+                <small>📅 Fecha del recuerdo</small>
+            </div>
+        </div>
+
+        <div class="memory-card" data-aos="fade-left">
+            <img src="img/foto4.jpg" alt="Foto 4" class="memory-img">
+            <div class="memory-text">
+                <h3>Cena especial</h3>
+                <p>Celebrando uno de nuestros logros. Me encanta verte feliz y cumplir tus sueños.</p>
+                <small>📅 Fecha del recuerdo</small>
+            </div>
+        </div>
+
+        <div class="memory-card" data-aos="fade-right">
+            <img src="img/foto5.jpg" alt="Foto 5" class="memory-img">
+            <div class="memory-text">
+                <h3>Tardes de domingo</h3>
+                <p>No necesitamos hacer nada extraordinario, con estar juntos en el sofá es suficiente.</p>
+                <small>📅 Fecha del recuerdo</small>
+            </div>
+        </div>
+
+        <div class="memory-card" data-aos="fade-left">
+            <img src="img/foto6.jpg" alt="Foto 6" class="memory-img">
+            <div class="memory-text">
+                <h3>Mirando al futuro</h3>
+                <p>Esta foto me recuerda todo lo que hemos construido y todo lo bonito que está por venir.</p>
+                <small>📅 Fecha del recuerdo</small>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="video-section" id="video-sorpresa">
+        <h2>Nuestro Video 🎥</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TU_ID_AQUI" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <footer>
+        <p>Te amo ❤️</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // --- CONFIGURACIÓN ---
+        // Pon aquí la fecha de inicio: Año, Mes (Enero es 0), Día
+        const startDate = new Date(2023, 11, 12); 
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+            document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        setInterval(updateTimer, 1000);
+
+        const music = document.getElementById('bg-music');
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                document.querySelector('.music-btn').innerHTML = '⏸️';
+            } else {
+                music.pause();
+                document.querySelector('.music-btn').innerHTML = '🎵';
+            }
+        }
+    </script>
+</body>
+</html>
