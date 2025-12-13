@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Galería 📸</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ESTILOS ESPECÍFICOS DEL ÁLBUM */
+        body {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffebee 100%);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #d81b60;
+        }
+        
+        p.subtitle {
+            font-size: 1.2rem;
+            color: #880e4f;
+            margin-bottom: 40px;
+        }
+
+        /* GRILLA DE FOTOS (Mampostería / Masonry simple) */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .photo-item {
+            position: relative;
+            height: 300px; /* Altura fija para uniformidad */
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 4px solid white;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* EFECTOS AL PASAR EL MOUSE */
+        .photo-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.4);
+            z-index: 10;
+            border-color: #d81b60;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1); /* Zoom suave */
+        }
+
+        /* TEXTO OCULTO QUE APARECE AL HOVER */
+        .caption {
+            position: absolute;
+            bottom: -50px; /* Oculto abajo */
+            left: 0;
+            width: 100%;
+            background: rgba(216, 27, 96, 0.85);
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            transition: bottom 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .photo-item:hover .caption {
+            bottom: 0; /* Sube y se muestra */
+        }
+
+        /* BOTÓN VOLVER */
+        .btn-volver {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 15px 40px;
+            background: #d81b60;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn-volver:hover {
+            transform: scale(1.05);
+            background: #ad1457;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>Nuestros Momentos</h1>
+        <p class="subtitle">Colección de sonrisas, abrazos y recuerdos favoritos.</p>
+
+        <div class="photo-grid">
+            
+            <div class="photo-item">
+                <img src="https://placehold.co/400x600/pink/white?text=Foto+1" alt="Foto">
+                <div class="caption">Ese día en el parque 🌳</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="https://placehold.co/400x600/pink/white?text=Foto+2" alt="Foto">
+                <div class="caption">Cena deliciosa 🍕</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="https://placehold.co/400x600/pink/white?text=Foto+3" alt="Foto">
+                <div class="caption">Haciendo locuras 🤪</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="https://placehold.co/400x600/pink/white?text=Foto+4" alt="Foto">
+                <div class="caption">Tu sonrisa bonita ❤️</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="https://placehold.co/400x600/pink/white?text=Foto+5" alt="Foto">
+                <div class="caption">Selfie borrosa pero linda</div>
+            </div>
+
+            <div class="photo-item">
+                <img src="https://placehold.co/400x600/pink/white?text=Foto+6" alt="Foto">
+                <div class="caption">Nuestro aniversario 🎉</div>
+            </div>
+
+            </div>
+
+        <a href="index.html" class="btn-volver">⬅ Regresar al Inicio</a>
+    </div>
+
+</body>
+</html>
