@@ -4,7 +4,7 @@
 /* --- GENERAL --- */
 body {
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(135deg, #fff0f5 0%, #fdfbfb 100%);
+    background: linear-gradient(135deg, #fff0f5 0%, #fdfbfb 100%); /* Fondo rosado suave */
     color: #5a3a4a;
     margin: 0;
     padding: 0;
@@ -24,17 +24,15 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #f8bbd0; /* Fondo rosado base */
-    /* Si tienes foto de fondo, descomenta la siguiente línea: */
-    /* background: url('img/portada.jpg') no-repeat center center/cover; */
+    background-color: #f8bbd0; /* Color de fondo base similar a tu imagen */
     position: relative;
-    overflow: hidden; /* Para que las burbujas no se salgan */
+    overflow: hidden;
 }
 
 /* Texto central */
 .header-content {
     position: relative;
-    z-index: 10; /* Por encima de las burbujas */
+    z-index: 10;
     padding: 20px;
 }
 
@@ -51,23 +49,23 @@ header {
     font-weight: 600;
 }
 
-/* --- NUEVO: BURBUJAS FLOTANTES EN EL HEADER (Como tu dibujo) --- */
+/* --- BURBUJAS FLOTANTES EN EL HEADER --- */
 .hero-bubble {
     position: absolute;
     border-radius: 50%;
     border: 4px solid #fff;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     overflow: hidden;
-    z-index: 1; /* Detrás del texto pero sobre el fondo */
+    z-index: 1;
     animation: float 6s ease-in-out infinite;
     cursor: pointer;
-    background: #e0e0e0; /* Color gris de "espera" */
+    background: #e0e0e0;
     transition: transform 0.3s;
 }
 
 .hero-bubble:hover {
     transform: scale(1.1);
-    z-index: 20; /* Al pasar el mouse, se pone enfrente de todo */
+    z-index: 20;
     border-color: #d81b60;
 }
 
@@ -77,21 +75,20 @@ header {
     object-fit: cover;
 }
 
-/* POSICIONES (Basado en tus círculos rojos) */
-.b1 { top: 10%; left: 10%; width: 150px; height: 150px; animation-delay: 0s; }
-.b2 { top: 5%; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; animation-delay: 1s; }
-.b3 { top: 15%; right: 10%; width: 160px; height: 160px; animation-delay: 2s; }
-.b4 { bottom: 15%; left: 15%; width: 140px; height: 140px; animation-delay: 1.5s; }
-.b5 { bottom: 20%; right: 20%; width: 130px; height: 130px; animation-delay: 2.5s; }
+/* POSICIONES EXACTAS (Basadas en tus círculos rojos) */
+.b1 { top: 10%; left: 8%; width: 160px; height: 160px; animation-delay: 0s; }
+.b2 { top: 8%; left: 50%; transform: translateX(-50%); width: 130px; height: 130px; animation-delay: 1s; }
+.b3 { top: 12%; right: 8%; width: 170px; height: 170px; animation-delay: 2s; }
+.b4 { bottom: 15%; left: 18%; width: 150px; height: 150px; animation-delay: 1.5s; }
+.b5 { bottom: 18%; right: 15%; width: 140px; height: 140px; animation-delay: 2.5s; }
 
-/* Animación de flotación suave */
+/* Animación de flotación */
 @keyframes float {
     0% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(2deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
-
-/* Corrección para la burbuja central (b2) que tiene transform propio */
+/* Corrección para la burbuja central */
 @keyframes float-center {
     0% { transform: translateX(-50%) translateY(0px); }
     50% { transform: translateX(-50%) translateY(-20px); }
@@ -117,16 +114,14 @@ header {
     flex-direction: column;
 }
 
-/* ESTILO DEL PLACEHOLDER DE FOTO */
+/* ESPACIO GRIS PARA LA FOTO */
 .photo-placeholder {
     width: 100%;
     height: 350px;
-    background-color: #eeeeee; /* Gris claro */
+    background-color: #eeeeee; /* Color gris de fondo */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #999;
-    font-weight: bold;
     border-bottom: 3px solid #f8bbd0;
     overflow: hidden;
 }
@@ -141,20 +136,20 @@ header {
     padding: 30px;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE (Celular y Tablet) */
 @media (min-width: 768px) {
     .memory-card:nth-child(even) { flex-direction: row-reverse; }
     .memory-card:nth-child(odd) { flex-direction: row; }
     .photo-placeholder { width: 50%; height: auto; border-bottom: none; }
-    .memory-text { width: 50%; }
+    .memory-text { width: 50%; display: flex; flex-direction: column; justify-content: center; }
 }
 
 @media (max-width: 768px) {
-    /* En celular hacemos las burbujas más chicas para que quepan */
-    .b1 { width: 80px; height: 80px; top: 15%; left: 5%; }
-    .b2 { width: 70px; height: 70px; top: 10%; }
-    .b3 { width: 80px; height: 80px; top: 15%; right: 5%; }
-    .b4 { width: 70px; height: 70px; bottom: 15%; left: 10%; }
-    .b5 { width: 70px; height: 70px; bottom: 15%; right: 10%; }
-    .header-content h1 { font-size: 3rem; }
+    .header-content h1 { font-size: 3.5rem; }
+    /* Ajuste de burbujas para celular */
+    .b1 { width: 90px; height: 90px; top: 10%; left: 5%; }
+    .b2 { width: 80px; height: 80px; top: 5%; }
+    .b3 { width: 90px; height: 90px; top: 10%; right: 5%; }
+    .b4 { width: 85px; height: 85px; bottom: 10%; left: 10%; }
+    .b5 { width: 80px; height: 80px; bottom: 12%; right: 10%; }
 }
